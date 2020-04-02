@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Mono", monospace;
+  height: 100vh;
+  width: 100vw;
+  background: url(imgs/background.jpg);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 10rem, 5rem, 1fr, 10rem;
+}
+
+.logo {
+  display: inline-block;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+  margin: 0;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.player-1 {
+  width: 100%;
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.8rem;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+.red {
+  display: inline-block;
+  margin: 0;
+  background: red;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+}
+
+.player-2 {
+  width: 100%;
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.8rem;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+.yellow {
+  display: inline-block;
+  margin: 0;
+  background: yellow;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+}
+
+.active {
+  border: 5px solid yellow;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 4px 4px rgba(182, 176, 0, 0.5);
+}
+
+#game {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  justify-self: center;
+  align-self: center;
+  background: white;
+  margin: 1rem;
+  border: 3px solid black;
+}
+
+.reset {
+  grid-row: 4;
+  grid-column: 1/-1;
+  justify-self: center;
+  align-self: center;
+  width: 5rem;
+  background: white;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+}
+
+/* game board table */
+
+#board td {
+  width: 500px;
+  height: 50px;
+  border: solid 1px #666;
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+  /* TODO: make into circles */
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  border-radius: 5rem;
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* TODO: make pieces red/blue,  depending on player 1/2 piece */
+.piece.p1 {
+  background-color: red;
+}
+
+.piece.p2 {
+  background-color: yellow;
+}
+
+/* column-top is table row of clickable areas for each column */
+
+#column-top td {
+  border: dashed 1px lightgray;
+}
+
+#column-top td:link,
+#column-top td:visited,
+#column-top td:hover,
+#column-top td:active {
+  background: center / contain no-repeat url(imgs/hand.png);
+}
+
+.fall {
+  animation-name: fall-animation;
+  animation-duration: 1000ms;
+}
+
+@keyframes fall-animation {
+  from {
+    transform: translateY(-300px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 40rem) {
+  #board td {
+    width: 75px;
+    height: 75px;
+  }
+
+  .logo {
+    font-size: 5rem;
+  }
+
+  .player-1,
+  .player-2 {
+    width: 30%;
+    font-size: 1rem;
+  }
+
+  .red,
+  .yellow {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .reset {
+    font-size: 1rem;
+    width: 6rem;
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
